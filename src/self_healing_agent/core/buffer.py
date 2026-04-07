@@ -4,7 +4,7 @@ from collections import deque
 from dataclasses import dataclass
 from typing import Deque, Iterator, List, Optional
 
-from self_healing_agent.core.models import ProcessSample, SystemSnapshot, TickRecord
+from self_healing_agent.core.models import ProcessSample, SystemSnapshot
 
 
 @dataclass(frozen=True, slots=True)

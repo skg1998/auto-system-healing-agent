@@ -15,6 +15,7 @@ Cross-platform **observe → detect → diagnose → decide → act** agent. Cor
 | [07-technology-stack.md](./07-technology-stack.md) | Language, libraries, packaging, config, logging, testing |
 | [08-product-and-runtime.md](./08-product-and-runtime.md) | Final product definition, how it runs on a system, user-facing behavior |
 | [09-learning-and-delivery-process.md](./09-learning-and-delivery-process.md) | Build → test → learn loop; pacing; what to understand at each layer |
+| [10-milestone-p0-p1.md](./10-milestone-p0-p1.md) | First shipped slice: what exists in the repo + what to learn next |
 
 ## Quick mental model
 

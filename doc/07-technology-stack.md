@@ -140,11 +140,11 @@ flowchart TB
 
 Record the final choices here to avoid drift:
 
-| Decision | Options | Chosen (TBD) |
-|----------|---------|--------------|
-| Primary language | Python / Go / Java | |
-| Config format | YAML / JSON | |
-| Baseline metrics library | psutil / gopsutil / other | |
-| Packaging target | dev-only / single binary / installer | |
+| Decision | Options | Chosen |
+|----------|---------|--------|
+| Primary language | Python / Go / Java | **Python 3.10+** |
+| Config format | YAML / JSON | **TBD** (next milestone) |
+| Baseline metrics library | psutil / gopsutil / other | **psutil** (`PsutilAdapter`) |
+| Packaging target | dev-only / single binary / installer | **dev / editable install** (`pip install -e ".[dev]"`) |
 
-Update this table when the repository is bootstrapped.
+Repository bootstrapped: `pyproject.toml`, `src/self_healing_agent/`, tests under `tests/`.
