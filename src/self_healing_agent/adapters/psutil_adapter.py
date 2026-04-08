@@ -5,6 +5,10 @@ from typing import List, Optional, Tuple
 
 import psutil
 
+from self_healing_agent.adapters.process_cpu import (
+    normalize_cpu_to_machine_share,
+    should_skip_process_for_ranking,
+)
 from self_healing_agent.core.models import ProcessSample, SnapshotCapabilities, SystemSnapshot
 
 
@@ -18,6 +22,7 @@ class PsutilAdapter:
 
     def __init__(self, process_limit: int = 256) -> None:
         self._process_limit = max(1, process_limit)
+        self._logical_cpus = max(1, int(psutil.cpu_count(logical=True) or 1))
         self._prev_t: Optional[float] = None
         self._prev_disk: Optional[Tuple[int, int]] = None  # read_bytes, write_bytes
         self._prev_net: Optional[Tuple[int, int]] = None  # bytes_sent, bytes_recv
@@ -84,11 +89,14 @@ class PsutilAdapter:
         out: List[ProcessSample] = []
         for p in procs:
             try:
-                cpu = float(p.cpu_percent(interval=None))
+                cpu_raw = float(p.cpu_percent(interval=None))
                 mem = p.memory_info()
                 rss = int(mem.rss)
                 pid = int(p.pid)
                 name = str(p.name() or "")
+                if should_skip_process_for_ranking(pid, name):
+                    continue
+                cpu = normalize_cpu_to_machine_share(cpu_raw, self._logical_cpus)
                 ppid = p.ppid() if p.ppid() is not None else None
                 nt = p.num_threads()
                 out.append(

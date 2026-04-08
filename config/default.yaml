@@ -1,0 +1,34 @@
+# Self-healing agent — default config (copy and edit)
+version: 1
+
+agent:
+  tick_interval_seconds: 5.0
+  buffer_max_ticks: 120
+
+diagnosis:
+  enabled: true
+  disk_io_high_bps: 5000000
+  net_io_high_bps: 5000000
+
+policy:
+  enabled: true
+  suggestions_enabled: true
+  soft_actions_enabled: false
+  hard_kill_enabled: false
+  min_confidence_for_soft: 0.48
+  min_confidence_for_hard: 0.62
+  min_cpu_share_for_soft: 10.0
+  min_cpu_share_for_hard: 15.0
+  hard_kill_max_per_window: 1
+  hard_kill_cooldown_seconds: 3600
+
+detection:
+  enabled: true
+  # System-wide CPU (psutil cpu_percent) — sustained above threshold
+  system_cpu_pct_above: 85.0
+  system_cpu_sustained_ticks: 3
+  # Physical memory use % — sustained above threshold
+  memory_pct_above: 90.0
+  memory_sustained_ticks: 3
+  # Set a threshold to null to disable that rule, e.g.:
+  # system_cpu_pct_above: null

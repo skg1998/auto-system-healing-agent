@@ -15,24 +15,46 @@ python -m venv .venv
 pip install -e ".[dev]"
 ```
 
+If `pip install -e` fails to write `sha-agent.exe` (permissions), use `python -m self_healing_agent` instead of the `sha-agent` command.
+
 ## Run
 
-One sample tick (prints a short summary):
+Print version: `python -m self_healing_agent --version` (or `-V`).
 
-```bash
-sha-agent once
-```
-
-Loop every 5 seconds:
-
-```bash
-sha-agent run --interval 5
-```
-
-Or:
+**One sample tick** (prints a short summary):
 
 ```bash
 python -m self_healing_agent once
+```
+
+**Loop** with defaults (built-in config):
+
+```bash
+python -m self_healing_agent run
+```
+
+**Loop** with YAML config (see `config/default.yaml`):
+
+```bash
+python -m self_healing_agent run --config config/default.yaml
+```
+
+**Dry-run** (log alerts as `[DRY]`):
+
+```bash
+python -m self_healing_agent run --config config/default.yaml --dry-run
+```
+
+**Quiet** (less per-tick metrics; detection still runs):
+
+```bash
+python -m self_healing_agent run --quiet
+```
+
+Override tick interval only (seconds):
+
+```bash
+python -m self_healing_agent run --interval 5
 ```
 
 ## Test
@@ -40,4 +62,16 @@ python -m self_healing_agent once
 ```bash
 pytest
 ```
-# auto-system-healing-agent
+
+`pytest.ini` sets `pythonpath = src` so tests always import the package from this repo.
+
+**Lint (optional, matches CI):** from the repo root after `pip install -e ".[dev]"`:
+
+```bash
+python -m ruff check src tests
+python -m ruff format --check src tests
+```
+
+**Pre-commit (optional):** `pip install pre-commit && pre-commit install` — runs Ruff on commit. Use `pre-commit run --all-files` to check once.
+
+Pushes and pull requests run **lint + tests** on GitHub Actions (Ubuntu, Windows, macOS).

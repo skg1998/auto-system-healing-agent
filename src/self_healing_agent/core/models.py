@@ -37,6 +37,7 @@ class ProcessSample:
     pid: int
     parent_pid: Optional[int]
     name: str
+    # From PsutilAdapter: ~share of total machine CPU (0–100), not raw psutil sum.
     cpu_pct: float
     rss_bytes: int
     thread_count: Optional[int]

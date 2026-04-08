@@ -1,5 +1,5 @@
 from self_healing_agent.core.buffer import TickBuffer, TickRecord
-from self_healing_agent.core.models import ProcessSample, SnapshotCapabilities, SystemSnapshot
+from self_healing_agent.core.models import SnapshotCapabilities, SystemSnapshot
 
 
 def _snap(ts: float = 1.0) -> SystemSnapshot:

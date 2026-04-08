@@ -143,7 +143,7 @@ Record the final choices here to avoid drift:
 | Decision | Options | Chosen |
 |----------|---------|--------|
 | Primary language | Python / Go / Java | **Python 3.10+** |
-| Config format | YAML / JSON | **TBD** (next milestone) |
+| Config format | YAML / JSON | **YAML** (`config/default.yaml`, Pydantic validation) |
 | Baseline metrics library | psutil / gopsutil / other | **psutil** (`PsutilAdapter`) |
 | Packaging target | dev-only / single binary / installer | **dev / editable install** (`pip install -e ".[dev]"`) |
 

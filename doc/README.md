@@ -16,6 +16,7 @@ Cross-platform **observe → detect → diagnose → decide → act** agent. Cor
 | [08-product-and-runtime.md](./08-product-and-runtime.md) | Final product definition, how it runs on a system, user-facing behavior |
 | [09-learning-and-delivery-process.md](./09-learning-and-delivery-process.md) | Build → test → learn loop; pacing; what to understand at each layer |
 | [10-milestone-p0-p1.md](./10-milestone-p0-p1.md) | First shipped slice: what exists in the repo + what to learn next |
+| [11-milestone-p2.md](./11-milestone-p2.md) | P2: YAML config, sustained detection, log notifier |
 
 ## Quick mental model
 

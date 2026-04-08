@@ -10,11 +10,15 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
   "psutil>=5.9.0",
+  "pyyaml>=6.0",
+  "pydantic>=2.0",
 ]
 
 [project.optional-dependencies]
 dev = [
   "pytest>=7.4.0",
+  "ruff>=0.8.0",
+  "pre-commit>=3.0.0",
 ]
 
 [project.scripts]
@@ -22,10 +26,6 @@ sha-agent = "self_healing_agent.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-pythonpath = ["src"]
 
 [tool.ruff]
 line-length = 100

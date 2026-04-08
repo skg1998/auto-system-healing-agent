@@ -23,6 +23,10 @@ class Pipeline:
         self._processes = processes
         self._buffer = buffer
 
+    @property
+    def buffer(self) -> TickBuffer:
+        return self._buffer
+
     def tick(self) -> TickRecord:
         snapshot = self._metrics.collect_system()
         plist = self._processes.list_processes()
